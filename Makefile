@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O2 -Wall -I/usr/include/eigen2
+CXXFLAGS = -O4 -Wall -I/usr/include/eigen3 -g
 LDFLAGS =
 OBJ = nca.o
 
