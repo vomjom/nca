@@ -1,10 +1,10 @@
 CXX = g++
-CXXFLAGS = -O2 -Wall -I/usr/include/eigen2
+CXXFLAGS = -O4 -Wall -I/usr/include/eigen3 -g -fopenmp
 LDFLAGS =
 OBJ = nca.o
 
 nca: $(OBJ)
-	$(CXX) -o $@ $^ $(CXX_FLAGS) $(LDFLAGS)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJ) nca
