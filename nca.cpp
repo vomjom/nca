@@ -46,22 +46,22 @@ int main(int argc, char *argv[]) {
 
     int size = -1;
     while(std::getline(csv_file, s)) {
-        if(size < 0) size = csv_size(s);
-
-        CsvSplitter tok(s);
-        Eigen::VectorXd x(size);
-        int i = 0, pos = 0;
-        for(CsvSplitter::const_iterator t = tok.begin(); t != tok.end(); ++t) {
-            if(pos == label_index) {
-                label.push_back(*t);
-            } else {
-                x[i] = std::atof(t->c_str());
-                ++i;
-            }
-            ++pos;
-        }
-
-        input.push_back(x);
+      if(size < 0) size = csv_size(s);
+      if (s.empty())
+	continue;
+      CsvSplitter tok(s);
+      Eigen::VectorXd x(size);
+      int i = 0, pos = 0;
+      for(CsvSplitter::const_iterator t = tok.begin(); t != tok.end(); ++t) {
+	if(pos == label_index) {
+	  label.push_back(*t);
+	} else {
+	  x[i] = std::atof(t->c_str());
+	  ++i;
+	}
+	++pos;
+      }
+      input.push_back(x);
     }
 
     // Test
